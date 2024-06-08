@@ -312,9 +312,7 @@ proyecto en android
 
 
 ### Android
-![image](https://github.com/4lanPz/AM_CV-Ionic_2024A/assets/117743495/fdb8a6ea-2812-456c-8910-9f9ff8a05e53)
-
-![image](https://github.com/4lanPz/AM_CV-Ionic_2024A/assets/117743495/32b1f30d-1ba4-4666-8a1b-00e9c5f6b89f)
+Error por dependencias que ya no tienen soporte y posible cambio a las nuevas librerias "npm install @awesome-cordova-plugins" no existe un plugin que lo reemplace
 
 
 
