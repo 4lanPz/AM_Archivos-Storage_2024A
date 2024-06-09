@@ -1,7 +1,11 @@
-# CV usando Ionic
+# Subir archivos usando Ionic
 
 Hacer un página que permita subir archivos jpg utilizando Ionic, Visual Studio Code y Android Studio
 
+## Clonar
+```bash
+Git clone https://github.com/4lanPz/AM_Archivos-Storage_2024A
+```
 ## Pasos
 
 - 1 Pre requisitos
@@ -42,10 +46,9 @@ Después de instalar los módulos del proyecto, es necesario instalar firebase a
 Para ello necesitamos ejecutar el siguiente comando
 ```bash
 npm install @angular/fire firebase@9.16.0 --legacy-peer-deps
-npm install @ionic-native/core --legacy-peer-deps
 ionic g page home
 ```
-una configuracion en las reglas de nuestro Firebase Storage para que nos permita ingresar archivos aun sin estar autenticados es:
+Una configuración en las reglas de nuestro Firebase Storage para que nos permita ingresar archivos aun sin estar autenticados es:
 ```bash
 rules_version = '2';
 service firebase.storage {
@@ -56,8 +59,7 @@ service firebase.storage {
   }
 }
 ```
-Estos lo que nos ayudan es a configurar nuestro Firebase para permitirnos guardar datos, en este caso imágenes no pasadas de formato jpg.
-Cuando generemos nuestro apikey nos debe entregar algo como esto
+Se necesita generar la apikey web de authentication para poder subir nuestros archivos son necesarios para poder subir los archivos a nuestra cuenta.
 ```bash
 firebaseConfig: {
     apiKey: "TU_API_KEY",
@@ -70,7 +72,7 @@ firebaseConfig: {
   }
 ```
 - 4 Funcionalidad
-Para empezar a generar el código necesitamos realizar una importación de los modulos de Firestorage
+Para empezar a generar el código necesitamos realizar una importación de los módulos de Firestorage
 ```bash
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -91,8 +93,8 @@ import { environment } from '../environments/environment';
 })
 export class AppModule {}
 ```
-Pero al poner ese código necesitamos tambien poner nuestras credenciales en nuestro archivo environment.ts
-Ahora con los módulos importados podemos empezar a realizar la lógica del login y que este nos redireccione a una página home
+Al poner este código necesitamos tambien poner nuestras credenciales en nuestro archivo environment.ts
+Ahora con los módulos importados podemos empezar a realizar la lógica del login y que este nos redireccione a una página home.
 
 Para poder subir archivos necesitaremos un archivo en el cual esté la logica de que archivos vamos a subir y de que tamaño son admitidos.
 En este caso dentro de la carpeta Home vamos a crear un archivo "format-file-size.pipe.ts" en este se implementa el un cambio de formato de las imagenes para redondearlo a 2 decimales 
@@ -156,19 +158,16 @@ import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { AngularFireStorage, AngularFireUploadTask} from '@angular/fire/compat/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-
 export interface imgFile {
   name: string;
   filepath: string;
   size: number;
 }
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-
 export class HomePage {
   fileUploadTask: AngularFireUploadTask;
   percentageVal: Observable<any>;
@@ -246,7 +245,7 @@ Este código hay una parte muy importate
 ```bash
 const fileStoragePath = `Carpeta/Alan`;
 ```
-Esta parte nos indica como va a almacenarse el archivo que vayamos a subir, en este caso "Carpeta" es una carpeta que se va a crear para almacenar la imagen y "Alan" es como se va a llamar el archivo al subir a firebase
+Esta parte nos indica como va a almacenarse el archivo que vayamos a subir, en este caso "Carpeta" es una carpeta que se va a crear para almacenar la imagen y "Alan" es como se va a llamar el archivo al subir a firebase.
 
 Ahora ya con esa lógica podemos pasar a hacer el html que va a contar con los espacios necesarios para poder subir los archivos, ás una barra de progreso cuando se suban los archivos.
 ```bash
@@ -278,7 +277,7 @@ Ahora ya con esa lógica podemos pasar a hacer el html que va a contar con los e
 </ion-content>
 ```
 - 5 Ejecución
-Para poder probar nuestro proyecto y ver los cambios que hemos hecho a nuestro proyecto se debe ejecutar
+Para poder probar nuestro proyecto y ver los cambios que hemos hecho a nuestro proyecto se debe ejecutar:
 ```bash
 npx ionic start 
 ```
@@ -309,9 +308,7 @@ proyecto en android
 
 ![image](https://github.com/4lanPz/AM_Archivos-Storage_2024A/assets/117743495/f63f1c32-685d-4902-a473-9d784b4257d1)
 
-
 ### Android
-Error por dependencias que ya no tienen soporte y posible cambio a las nuevas librerias "npm install @awesome-cordova-plugins" no existe un plugin que lo reemplace
+![image](https://github.com/4lanPz/AM_Archivos-Storage_2024A/assets/117743495/60a5eb59-3589-4df6-8943-0a2e2f2a58a9)
 
-
-
+![image](https://github.com/4lanPz/AM_Archivos-Storage_2024A/assets/117743495/9a1b5231-ec5b-4b93-9eba-8fcd52801437)
