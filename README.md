@@ -47,11 +47,11 @@ ionic g page home
 ```
 una configuracion en las reglas de nuestro Firebase Storage para que nos permita ingresar archivos aun sin estar autenticados es:
 ```bash
+rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
     match /{allPaths=**} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null;
+      allow read, write: if request.time <timestamp.date(2024,7,9); // Permitir acceso no autenticado
     }
   }
 }
@@ -101,7 +101,6 @@ nombreproyecto/
 ├── node_modules/
 ├── src/   <----------
 │   ├── app/ <----------
-│   │   ├── tab1/ <----------
 │   │   ├── home/ <----------
 │   │   │   ├── format-file-size.pipe.ts/    crear<----------
 ```
